@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function show(){
+        alert(`这里的this是${this}`);
+      }
+      //document.onclick=show();//正常是这样 结果是obj global
+      document.onclick=show.bind('abc');
+    </script>
+  </body>
+</html>

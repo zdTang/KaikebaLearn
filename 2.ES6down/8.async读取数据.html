@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery-3.3.1.min.js">
+
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      async function show(){
+        let data1=await $.ajax({url:"a.txt",dataType:"json"});
+        let data2=await $.ajax({url:"b.txt"});
+        let data3=await $.ajax({url:"c.txt",dataType:"json"});
+        console.log(data1,data2,data3);
+      }
+      show();
+    </script>
+  </body>
+</html>

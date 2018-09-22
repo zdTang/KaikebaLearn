@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery-3.3.1.min.js">
+
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      $.ajax({
+        url:'a.txt',
+        dataType:'json',
+        success(data){
+          console.log(data);
+        },
+        error(err){
+          alert("获取数据失败");
+        }
+      })
+    </script>
+  </body>
+</html>

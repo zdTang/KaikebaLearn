@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      div{
+        width:100px;
+        height:100px;
+        margin:20px;
+        background-color: #ff00ff;
+        float:left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <input type="button" name="" value="改变颜色" id="change">
+    <script type="text/javascript">
+      let input=document.getElementById('change');
+      input.onclick=()=>{
+        let divs=document.getElementsByTagName('div');
+        Array.from(divs).forEach(function(item){
+          item.style.backgroundColor="#ffff00";
+        })
+      }
+    </script>
+  </body>
+</html>

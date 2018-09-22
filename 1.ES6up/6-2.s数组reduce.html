@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let arr1=[1,2,3,4,5,6,7,8,9,10];
+      let arr2=arr1.reduce(function(temp,item,index){
+        console.log(temp,item,index);
+        return item+temp;
+      })
+      //算平均值
+      let arr3=[1,2,3,4,5,6,7,8,9,10];
+      let arr4=arr3.reduce((temp,item,index)=>{
+        if(index<arr1.length-1){
+          return temp+item;
+        }else{
+          return (temp+item)/arr1.length;
+        }
+      });
+      console.log(arr4);
+    </script>
+  </body>
+</html>

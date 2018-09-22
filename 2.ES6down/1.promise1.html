@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery-3.3.1.min.js">
+
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      //1.new 一个promise对象
+      //2.Promise对象的构造函数，要传入一个function，且含有两个参数（resolve,reject)，而这两个蚕食实质上是两个函数，在后面用then定义
+
+      let p=new Promise(function(resolve,reject){
+        // resolve --成功时调用，在下面then里面定义，等同于success(){}
+        //reject ---失败时调用，在下面then里面定义，等同于error(){}
+        $.ajax({
+          url:"a.txt",
+          dataType:"json",
+          success(data){
+            resolve(data);
+          },
+          error(err){
+            reject(err);
+          }
+        });
+
+      });
+      p.then(json=>{
+        console.log(json);
+      },err=>{
+        console.log("获取数据失败");
+      });
+    </script>
+  </body>
+</html>

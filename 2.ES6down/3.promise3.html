@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>promise().all([$.ajax]).then()</title>
+    <script src="jquery-3.3.1.min.js">
+
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //1. $.ajax返回的是一个promise独享
+      //2. Promise.all([xxx]).then()可以处理所有promise对象
+      Promise.all([
+        $.ajax({url:"a.txt",dataType:"json"}),
+        $.ajax({url:"b.txt",dataType:"json"}),
+        $.ajax({url:"c.txt",dataType:"json"})
+      ]).then(arr=>{
+        alert("成功");
+        console.log(arr);
+      },err=>{
+        alert("失败");
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery-3.3.1.min.js">
+
+    </script>
+    <script src="runner.js">
+
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function *show() {
+        let data1=yield $.ajax({url:"a.txt",dataType:"json"});
+        //yield的作用是，让ajax（异步操作）获取数据结束后，才把值赋给data1，然后进行下一步操作
+        if(data1.a+data1.b>10){
+          let data2=yield $.ajax({url:"b.txt"});
+          alert("输出B");
+        }else{
+          let data3=yield $.ajax({url:"c.txt",dataType:"json"});
+          alert("输出C");
+        }
+      }
+      runner(show);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    function sleep(sec) {
+      return new Promise((resolve,reject)=>{
+        setTimeout(function(){
+          resolve();
+        },sec*1000);
+      });
+    }
+      async function show(){
+        alert("aaa");
+        // await new Promise((resolve,reject)=>{
+        //   setTimeout(function(){
+        //     resolve();
+        //   },5000)
+        // });
+        await sleep(1);
+        alert("bbb");
+        await sleep(2);
+        alert("ccc");
+      }
+      show();
+    </script>
+  </body>
+</html>

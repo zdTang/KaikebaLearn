@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      class Person{
+        constructor(name,age){
+          this.name=name;
+          this.age=age;
+        }
+        showName(){
+          alert(this.name);
+        }
+        showAge(){
+          alert(this.age);
+        }
+      }
+      let name='Wo';
+      let p=new Person('Jenny',18);
+
+      document.onclick=p.showName();
+    </script>
+  </body>
+</html>

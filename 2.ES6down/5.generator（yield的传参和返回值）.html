@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function *show() {
+        alert("aaa");
+        let a=yield;
+        alert(a);
+      }
+      let gen=show();
+      gen.next();//会输出undefined，传参要在第二个next里面传，然后第一个yield里面接收
+      //因为第一次执行，代码会执行到yield之前，而let a=yield是指yield执行之后，才会把值赋给a
+      gen.next(12);//执行yield，以及yield之后的内容，此时传参，可以执行yield之后把值赋给啊，并且输出
+    </script>
+  </body>
+</html>

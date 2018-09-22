@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //generator两个特点：写法，暂停yield
+      function *show(){
+        alert("aaa");
+        yield;
+        alert("bbb");
+      }
+      let gen=show();
+      gen.next();
+      setTimeout(function(){
+        gen.next();
+      },5000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>promise().then()</title>
+    <script src="jquery-3.3.1.min.js">
+
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let p1=new Promise(function(resolve,reject){$.ajax({
+        url:"a.txt",
+        dataType:"json",
+        success(data){resolve(data)},
+        error(err){reject(err)}
+      })});
+      let p2=new Promise(function(resolve,reject){$.ajax({
+        url:"b.txt",
+        dataType:"json",
+        success(data){resolve(data)},
+        error(err){reject(err)}
+      })});
+      let p3=new Promise(function(resolve,reject){$.ajax({
+        url:"c.txt",
+        dataType:"json",
+        success(data){resolve(data)},
+        error(err){reject(err)}
+      })});
+      Promise.all([p1,p2,p3]).then(arr=>{
+        alert("成功了");
+        let [data1,data2,data3]=arr;
+        console.log(arr);
+      },err=>{
+        alert("失败了");
+        console.log(err);
+      })
+    </script>
+  </body>
+</html>

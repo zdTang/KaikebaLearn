@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      class Person{
+        constructor(name,age){
+          this.name=name;
+          this.age=age;
+        }
+        showName(){
+          alert(this.name);
+        }
+        showAge(){
+          alert(this.age);
+        }
+      }
+
+      let p=new Person('Jenny',18);
+      p.showName();
+      p.showAge();
+
+      class Worker extends Person{
+        constructor(name,age,job){
+          super(name,age);
+          this.job=job;
+        }
+        showJob(){
+          alert(this.job);
+        }
+      }
+      let w=new Worker('worker',12,'打码的');
+      w.showName();
+      w.showAge();
+      w.showJob();
+    </script>
+  </body>
+</html>
