@@ -3,27 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script src="jquery-3.3.1.js" charset="utf-8"></script>
+    
     <script>
-      $(function () {
-        $("#btn1").click(function () {
-          $.ajax({
-            url:"1.php",
-            data:{a:12,b:5},
-            type:'get',
-            dataType:"text",
-            success(str){
-              alert(str);
-            },
-            error(){
-              alert("出现了错误");
-            }
-          })
-        })
-      })
+      // $(function () {
+      //   $("#btn1").click(function () {
+      //     $.ajax({
+      //       url:"1.php",
+      //       data:{a:12,b:5},
+      //       type:'get',
+      //       dataType:"text",
+      //       success(str){
+      //         alert(str);
+      //       },
+      //       error(){
+      //         alert("出现了错误");
+      //       }
+      //     })
+      //   })
+      // })
     </script>
   </head>
   <body>
-    <input type="button" id="btn1" name="" value="提交">
+    <form class="form1" id="form1" action="1.php" method="get">
+      <input type="text" name="a" value="">
+      <input type="text" name="b" value="">
+      <input type="submit" id="btn1" name="" value="提交">
+    </form>
+
   </body>
 </html>

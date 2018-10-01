@@ -7,6 +7,8 @@
     <script type="text/javascript">
       $(function () {
         $("#btn1").click(function () {
+          //开始提交时，禁用submit
+          $("#btn1").attr("disabled",true);
           $.ajax({
             url:"1.php",
             data:{a:12,b:5},
@@ -14,9 +16,14 @@
             dataType:"text",
             success(str){
               alert(str);
+              $("#btn1").attr("disabled",false);
             },
             error(){
               alert("出现了错误");
+              $("#btn1").attr("disabled",false);
+            },//或：
+            finish(){
+              $("#btn1").attr("disabled",false);
             }
           })
         })

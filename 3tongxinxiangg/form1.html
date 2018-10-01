@@ -16,6 +16,14 @@
       window.onload=function(){
         let form1=$("#form1")[0];//因为无论有多少个form1，都会返回一个数组，所以要取第一个
         alert(form1);
+        let oUser=document.getElementByName("userName")[0];
+        //表单验证例子
+        form1.onsubmit=function(){
+          if(oUser.value==""){
+            alert("用户名不能为空");
+            return false;//阻止默认的提交表单的行为
+          }
+        }
       }
     </script>
   </head>

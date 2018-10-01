@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    window.onload=function() {
+      let btn1=document.getElementById("btn1");
+      btn1.onclick=function(){
+        //xhr不兼容Ie6
+        //1.创建
+
+        if(XMLHttpRequest){
+          var xhr=new XMLHttpRequest();
+
+        }else{
+          var xhr=new ActiveXObject("Microsoft-XMLHttp");
+          //上述XHR对象不兼容ie6,所以使用插件ActiveXObject加载
+        }
+        //2.连接
+        xhr.open("POST","2.php",true);
+          //声明数据格式，否则后台解析不出格式
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        //3.发送请求
+        xhr.send("a=12&b=5");
+
+        //4.接收数据
+        xhr.onreadystatechange=function(){
+
+          if(xhr.readyState==4){
+              console.log("test");
+            if(xhr.status>=200&&xhr.status<300||xhr.status==304){
+              alert("成功"+xhr.responseText);
+            }else {
+              alert("失败");
+            }
+          }
+        }
+      }
+    }
+
+
+    </script>
+    <input type="button" name="" id="btn1" value="提交">
+  </body>
+</html>

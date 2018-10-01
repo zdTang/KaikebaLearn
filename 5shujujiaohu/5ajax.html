@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/ajax1.js">
+
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+    window.onload=function () {
+      let btn1=document.getElementById("btn1");
+      btn1.onclick=function(){
+        ajax({
+          url:"1.php",
+          type:"get",
+          dataType:"text",
+          data:{a:12,b:5},
+          success:function(str) {
+            alert("成功"+str);
+          },
+          error:function() {
+            alert("失败");
+          }
+        })
+
+      }
+    }
+
+
+    </script>
+
+    <input type="button" name="" value="提交" id="btn1">
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+      function show(json) {
+        let oUl=document.getElementById('ul1');
+        json.s.forEach(function(str) {
+          let oLi=document.createElement("li");
+          oLi.innerHTML=str;
+          oUl.appendChild(oLi);
+        })
+
+      }
+      window.onload=function() {
+        let oInp=document.getElementById('input1');
+        oInp.oninput=function(){
+          let oS=document.createElement("script");
+          oS.src=`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${oInp.value}&cb=show`;
+          document.head.appendChild(oS);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="input1" name="" value="">
+    <ul id="ul1">
+
+    </ul>
+  </body>
+</html>
