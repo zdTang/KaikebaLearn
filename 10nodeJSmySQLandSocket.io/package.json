@@ -1,0 +1,17 @@
+{
+  "name": "10nodejsmysqlandsocket.io",
+  "version": "1.0.0",
+  "description": "mysql",
+  "main": "0.mysql.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql"
+  ],
+  "author": "jennypang",
+  "license": "ISC",
+  "devDependencies": {
+    "mysql": "^2.16.0"
+  }
+}

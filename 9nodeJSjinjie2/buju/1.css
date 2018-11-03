@@ -1,0 +1,18 @@
+/*浮动布局  */
+.container div{
+  height:600px;
+
+}
+.left{
+  width:100px;
+  background-color: #ff00ff;
+  float:left;
+}
+.center{
+  background-color: #ffff00;
+}
+.right{
+  width:100px;
+  background-color:#0000ff;
+  float:right;
+}

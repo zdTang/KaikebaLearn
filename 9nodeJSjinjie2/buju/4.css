@@ -1,0 +1,20 @@
+/* 表格布局 */
+.container{
+  display: table;
+  width:100%;
+}
+.container>div{
+  display: table-cell;
+  height:600px;
+}
+.left{
+  width:300px;
+  background: pink;
+}
+.center{
+  background: black;
+}
+.right{
+  background: green;
+  width:300px;
+}

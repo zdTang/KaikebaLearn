@@ -1,0 +1,13 @@
+.parent{
+    width:100px;
+    height:100px;
+    display:table-cell;
+    text-align:center;
+    vertical-align:middle;
+    background-color:#ff00ff;
+}
+.child{
+    width:30px;
+    height:40px;
+    display:inline-block;
+    background-color:#ffff00;
