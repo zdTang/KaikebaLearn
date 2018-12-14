@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .err_box{
+        color:red;
+        width:200px;
+        display:none;
+      }
+      .me{
+        color:green;
+      }
+      ul{
+        width:200px;
+        height:200px;
+        border:1px solid #000000;
+      }
+    </style>
+    <script src="http://localhost:8080/socket.io/socket.io.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      //1.连接：
+      let sock=io.connect('ws://localhost:8080/');
+      //2.监听是否连接，从而改变样式
+      sock.on('connect',()=>{
+        document.getElementsByClassName('err_box')[0].style.display="none";
+      });
+      sock.on('disconnect',()=>{
+        document.getElementsByClassName('err_box')[0].style.display="block";
+      })
+
+      window.onload=function() {
+        let oTxt=document.getElementById('txt1');
+        let oBtn=document.getElementById('btn1');
+        let oUl=document.getElementById('ul1');
+        oBtn.onclick=function() {
+          sock.emit('msg',oTxt.value);
+
+          let oli=document.createElement('li');
+          oli.innerHTML=oTxt.value;
+          oli.className='me';
+          oTxt.value='';
+          ul1.appendChild(oli);
+
+
+        }
+        sock.on('msg',str=>{
+          let oli=document.createElement('li');
+          oli.innerHTML=str;
+
+          ul1.appendChild(oli);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="err_box">
+      连接断开，请检查连接
+    </div>
+    <ul id="ul1">
+    </ul>
+    <textarea name="txt" rows="3" cols="40" id="txt1"></textarea>
+    <input type="button" name="sub" value="发送" id="btn1">
+
+  </body>
+</html>

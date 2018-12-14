@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      let sock=new WebSocket('ws://localhost:8080/');
+
+      sock.emit=function (name,...args) {
+        sock.send(JSON.stringify({name,data:[...args]}));
+      }
+      //连接：
+      sock.onopen=function(){
+        alert('连接上了');
+        sock.emit('msg',12,5);
+      }
+
+      //数据：
+      sock.onmessage=function(){
+        alert('数据');
+      }
+
+      //断开
+      sock.onclose=function(){
+        alert('断了');
+      }
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

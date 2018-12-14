@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+
+
+
+      // window.onload=function() {
+      //   let oUser=document.getElementById('user');
+      //   let oPass=document.getElementById('pass');
+      //   let oBtn=document.getElementById('btn1');
+      //
+      //   oBtn.onclick=function() {
+      //     let data=new FormData();
+      //     data.set('user',oUser.value);
+      //     data.set('pass',oPass.value);
+      //
+      //     //用ajax提交数据
+      //
+      //     //1.创建xhr对象
+      //     let xhr=new XMLHttpRequest();
+      //
+      //
+      //     //处理数据
+      //     let arr=[];
+      //     data.forEach((value,key)=>{
+      //       arr.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+      //     });
+      //     //2.连接
+      //     //xhr.open('GET',`http://localhost:8080/api?${arr.join('&')}`,true);
+      //
+      //     //POST
+      //     xhr.open('POST','http://localhost:8080/api',true);
+      //     xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+      //
+      //     //3.发送
+      //     xhr.send();
+      //
+      //     //3.发送
+      //     //xhr.send(data);
+      //
+      //     //4.检测状态
+      //     xhr.onreadstatechange=function() {
+      //       if(xhr.readyState==4){
+      //         if(xhr.status>=200 && xhr.status<300 || xhr.status==304){
+      //           alert('成功'+xhr.responseText);
+      //         }else{
+      //           alert('失败');
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
+      window.onload=function() {
+
+
+        let oUser=document.getElementById('user');
+        let oPass=document.getElementById('password');
+        let oSubmit=document.getElementById('submit');
+        let oF1=document.getElementById('f1');
+
+        let data=new FormData();
+
+        oSubmit.onclick=function() {
+          data.append('user',oUser.value);
+          data.append('password',oPass.value);
+          Array.from(oF1.files).forEach(file=>{
+            data.append('files',file);
+          });
+
+          //1.创建XHR对象
+          let xhr=new XMLHttpRequest();
+          //2.处理数据
+          let arr=[];
+          data.forEach((value,key)=>{
+            arr.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+          });
+          //2.连接
+          xhr.open('GET',`http://localhost:8080/api?${arr.join('&')}`,true);
+
+          //3.发送
+          xhr.send();
+
+          //4、检测状态
+          xhr.onreadystatechange=function() {
+            if(xhr.readyState==4){
+              if(xhr.status>=200&&xhr.status<300||xhr.status==304){
+                alert('成功'+xhr.responseText);
+              }else{
+                alert('失败');
+              }
+            }
+          }
+
+
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 用户：<input id='user' type='text' />
+    密码：<input id='pass' type='password' />
+    <input id='btn1' type='button' value="提交"/> -->
+
+    用户：<input type='text' id="user" />
+    密码：<input type='password' id="password" />
+    <input type="file" id="f1" />
+    <input type="button" id="submit" value="提交" />
+  </body>
+</html>

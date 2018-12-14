@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style media="screen">
+      .box{
+        width:500px;
+        height:200px;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-250px,-100px);
+        margin:auto auto;
+        display:block;
+        background-color:#cccccc;
+      }
+    </style>
+    <script>
+    window.onload=function() {
+      let oBox=document.getElementsByClassName('box')[0];
+      oBox.ondragenter=function () {
+        oBox.innerHTML='松手上传'
+      }
+      let i=0;
+      oBox.ondragover=function() {
+        console.log('i');
+        i++;
+        return false;
+      }
+      oBox.ondragleave=function() {
+        oBox.innerHTML='拖拽上传';
+      }
+      oBox.ondrop=function(ev) {
+        oBox.innerHTML='拖拽上传';
+
+        let data=new FormData();
+
+          Array.from(ev.dataTransfer.files).forEach(file=>{
+            data.append('files',file);
+          });
+
+          //1.创建XHR对象
+          let xhr=new XMLHttpRequest();
+          // //2.处理数据
+          // let arr=[];
+          // data.forEach((value,key)=>{
+          //   arr.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+          // });
+          //2.连接
+          xhr.open('POST',`http://localhost:8080/api`,true);
+
+          //3.发送
+          xhr.send(data);
+
+          //4、检测状态
+          xhr.onreadystatechange=function() {
+            if(xhr.readyState==4){
+              if(xhr.status>=200&&xhr.status<300||xhr.status==304){
+                alert('成功'+xhr.responseText);
+              }else{
+                alert('失败');
+              }
+            }
+        }
+      return false;
+      }
+
+
+
+
+    }
+
+    </script>
+    <title></title>
+  </head>
+  <body>
+    <div class="box">
+      拖拽上传
+    </div>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('#reg_btn').click(function(){
+            $.ajax({
+              url:'/reg',
+              data:{username:$('#user').val(),password:$('#password').val()},
+              dataType:'json',
+              success(json){
+                if(json.err){
+                  alert('注册失败'+json.msg);
+                }else{
+                  alert('注册成功');
+                }
+              },
+              error(err){
+                alert("失败aaa");
+                console.log(err);
+              }
+            });
+        });
+
+        $('#login_btn').click(function() {
+            $.ajax({
+              url:'/login',
+              data:{username:$('#user').val(),password:$('#password').val()},
+              dataType:'json',
+              success(json) {
+                if(json.err){
+                  alert('登陆失败'+json.msg);
+                }else{
+                  alert('登陆成功');
+                }
+              },
+              error(err){
+                alert("失败");
+              }
+            });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" name="username" value="" id="user">
+    <input type="password" name="password" value="" id="password">
+    <<input type="button" name="" value="注册" id="reg_btn">
+    <input type="button" name="" value="登陆" id="login_btn">
+  </body>
+</html>

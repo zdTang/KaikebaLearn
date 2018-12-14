@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      window.onload=function() {
+        //获取按钮
+        let oSubmit=document.getElementById('submit');
+        //创建data对象
+        let data=new FormData();
+
+        oSubmit.onclick=function() {
+          //ajax：
+          //1.创建ajax对象
+          let xhr=new XMLHttpRequest();
+          //处理数据
+
+          //2.链接
+          xhr.open('POST','http://localhost:8080/api',true);
+
+          //3发送
+          xhr.send(data);
+
+          //4检测状态
+          xhr.onreadystatechange=function() {
+            if(xhr.readyState==4){
+              if(xhr.status>=200&&xhr.status<300||xhr.status==304){
+                alert('成功'+xhr.resopnseText);
+              }else{
+                alert('失败');
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <input type="button"  id="submit" name="" value="">
+  </body>
+</html>

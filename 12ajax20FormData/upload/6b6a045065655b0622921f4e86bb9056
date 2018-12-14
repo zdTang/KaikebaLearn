@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    let data=new FormData();
+    data.set('user','jenny');
+    data.append('user','pang');
+    console.log(data.get('user'));//只获取到jenny
+    console.log(data.getAll('user'));//获取到user数组
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
